@@ -668,7 +668,7 @@ h1,h2,h3{
       <span>★★★★★</span><span>Standard cinq étoiles</span>
     </div>
     <h1 data-reveal><span class="shine-text">L'éclat de l'exigence, livré à votre porte</span></h1>
-    <p data-reveal>Un nettoyage automobile haut de gamme, entièrement réalisé à la main avec des produits professionnels, à domicile, à l'hôtel ou sur votre lieu de séjour, entre Saint-Tropez et la Côte d'Azur.</p>
+    <p data-reveal>Un nettoyage automobile haut de gamme, entièrement réalisé à la main avec des produits professionnels — à domicile, à l'hôtel ou sur votre lieu de séjour, entre Saint-Tropez et la Côte d'Azur.</p>
     <div class="hero__actions" data-reveal>
       <a href="#" class="btn btn--primary" data-wa-msg="Bonjour, je souhaite réserver une prestation avec Prestige Service Automobile.">
         Réserver sur WhatsApp
@@ -696,7 +696,7 @@ h1,h2,h3{
     <div class="about__text">
       <div class="eyebrow" data-reveal="left">N°01 — L'atelier</div>
       <h2 data-reveal="left">Le geste avant la machine</h2>
-      <p data-reveal="left">Prestige Service Automobile propose une expérience de nettoyage automobile haut de gamme, entièrement réalisée à la main avec des produits professionnels. Chaque intervention est menée avec le plus grand soin pour préserver et sublimer votre véhicule, citadine, SUV ou voiture de prestige.</p>
+      <p data-reveal="left">Prestige Service Automobile propose une expérience de nettoyage automobile haut de gamme, entièrement réalisée à la main avec des produits professionnels. Chaque intervention est menée avec le plus grand soin pour préserver et sublimer votre véhicule — citadine, SUV ou voiture de prestige.</p>
       <ul class="about__list stagger">
         <li data-reveal="left" style="--i:0"><span class="num">01</span>Lavage automobile premium à domicile</li>
         <li data-reveal="left" style="--i:1"><span class="num">02</span>Service entièrement réalisé à la main</li>
@@ -782,7 +782,7 @@ h1,h2,h3{
       <article class="process__slide">
         <span class="step-num">01</span>
         <h3>Prise de rendez-vous</h3>
-        <p>Vous choisissez l'heure et le lieu, domicile, hôtel ou lieu de séjour, par téléphone ou WhatsApp.</p>
+        <p>Vous choisissez l'heure et le lieu — domicile, hôtel ou lieu de séjour — par téléphone ou WhatsApp.</p>
       </article>
       <article class="process__slide">
         <span class="step-num">02</span>
@@ -812,7 +812,7 @@ h1,h2,h3{
         <div class="ring ring--3" data-tier="3"></div>
         <div class="ring ring--2" data-tier="2"></div>
         <div class="ring ring--1 is-active" data-tier="1"></div>
-        <div class="rings__center"><span>Saint&#8209;Tropez</span></div>
+        <div class="rings__center"><span data-zone-label-target>Saint&#8209;Tropez</span></div>
       </div>
     </div>
 
@@ -822,15 +822,15 @@ h1,h2,h3{
       <p data-reveal style="color:var(--slate);max-width:42ch;margin:0 0 2rem;">Service à domicile, à l'hôtel ou sur votre lieu de séjour. Sélectionnez une zone pour voir le détail.</p>
 
       <div class="zone-tiers stagger">
-        <button class="zone-tier is-active" data-tier="1" data-reveal="left" style="--i:0">
+        <button class="zone-tier is-active" data-tier="1" data-zone-label="Saint&#8209;Tropez" data-reveal="left" style="--i:0">
           <span class="zone-tier__badge">✓</span>
           <span class="zone-tier__body"><strong>Gratuit</strong><p>Saint-Tropez · Ramatuelle</p></span>
         </button>
-        <button class="zone-tier" data-tier="2" data-reveal="left" style="--i:1">
+        <button class="zone-tier" data-tier="2" data-zone-label="Sainte&#8209;Maxime" data-reveal="left" style="--i:1">
           <span class="zone-tier__badge">+50</span>
           <span class="zone-tier__body"><strong>+ 50 €</strong><p>Sainte-Maxime · Cavalaire-sur-Mer · La Croix-Valmer</p></span>
         </button>
-        <button class="zone-tier" data-tier="3" data-reveal="left" style="--i:2">
+        <button class="zone-tier" data-tier="3" data-zone-label="Monaco" data-reveal="left" style="--i:2">
           <span class="zone-tier__badge">+100</span>
           <span class="zone-tier__body"><strong>+ 100 €</strong><p>Monaco · Saint-Jean-Cap-Ferrat</p></span>
         </button>
@@ -1004,6 +1004,7 @@ h1,h2,h3{
   /* ---------- zones interactive rings ---------- */
   var tiers = document.querySelectorAll(".zone-tier");
   var rings = document.querySelectorAll(".ring");
+  var centerLabel = document.querySelector("[data-zone-label-target]");
   if (tiers.length){
     tiers.forEach(function(tier){
       tier.addEventListener("click", function(){
@@ -1012,6 +1013,10 @@ h1,h2,h3{
         rings.forEach(function(r){
           r.classList.toggle("is-active", r.getAttribute("data-tier") === target);
         });
+        if (centerLabel){
+          var label = tier.getAttribute("data-zone-label");
+          if (label) centerLabel.textContent = label;
+        }
       });
     });
   }
